@@ -1,0 +1,37 @@
+{
+  "name": "ratelimiter-assignment",
+  "version": "1.0.0",
+  "description": "Create basic rate limiter with redis to cache request and queue excessive request for logs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npx tsc",
+    "start": "node dist/server.js",
+    "dev": "npx tsc && nodemon dist/server.js"
+  },
+  "author": "Vedant Maral",
+  "license": "ISC",
+  "dependencies": {
+    "@types/express": "^4.17.17",
+    "@types/express-session": "^1.17.7",
+    "@types/jsonwebtoken": "^9.0.2",
+    "@types/node": "^20.4.4",
+    "amqplib": "^0.10.7",
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "express": "^4.21.2",
+    "express-http-context": "^1.2.4",
+    "express-rate-limit": "^6.8.1",
+    "express-route-groups": "^1.0.0",
+    "express-session": "^1.17.3",
+    "ioredis": "^5.6.1",
+    "jsonwebtoken": "^9.0.2",
+    "redis": "^4.7.0",
+    "typescript": "^5.1.6"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10",
+    "ts-node": "^10.9.2"
+  }
+}
