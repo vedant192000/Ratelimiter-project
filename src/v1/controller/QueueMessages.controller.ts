@@ -12,8 +12,9 @@ class QueueMessagesController extends BaseController {
 
     public async fetch(req: Request, res: Response) {
         try {
-            return res.json(RabbitMQConnector.publicMessages);
             
+            return res.json(RabbitMQConnector.publicMessages);
+
         } catch (error: any) {
             console.log(error)
             const apiException = (typeof error.isHandled == 'undefined'  || error.isHandled === false) ? new APIException(error.message, error.stack) : error;
