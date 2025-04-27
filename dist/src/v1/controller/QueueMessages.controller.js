@@ -22,8 +22,7 @@ class QueueMessagesController extends base_controller_1.default {
     fetch(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                let json = yield rabbitqueue_connector_1.default.consume();
-                this.httpOk(res, json);
+                return res.json(rabbitqueue_connector_1.default.publicMessages);
             }
             catch (error) {
                 console.log(error);

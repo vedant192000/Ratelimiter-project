@@ -16,6 +16,7 @@ const application_config_1 = __importDefault(require("./application.config"));
 const redis_connector_1 = __importDefault(require("../common/connection-manager/redis-connector"));
 const express_1 = __importDefault(require("express"));
 const path_1 = __importDefault(require("path"));
+const rabbitqueue_connector_1 = __importDefault(require("../common/connection-manager/rabbitqueue-connector"));
 class App extends application_config_1.default {
     constructor() {
         super();
@@ -27,6 +28,9 @@ class App extends application_config_1.default {
             this.middleware();
             this.routes();
             yield redis_connector_1.default.getInstance();
+            (() => __awaiter(this, void 0, void 0, function* () {
+                yield rabbitqueue_connector_1.default.consume();
+            }))();
             const appServer = this.app.listen(CONFIG.APP_PORT, () => {
                 console.info(`Application is running at ${CONFIG.APP_PORT}`);
             });

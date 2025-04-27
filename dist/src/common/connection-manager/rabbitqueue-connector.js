@@ -74,7 +74,6 @@ class RabbitMQConnector {
                         channel.ack(msg);
                     }
                 }, { noAck: false });
-                return RabbitMQConnector.publicMessages;
             }
             catch (error) {
                 console.error('Error consuming from RabbitMQ:', error);
