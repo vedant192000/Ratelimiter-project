@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>RabbitMQ Queue Logs</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 2rem; }
+        h1 { color: #333; }
+        #logs { margin-top: 20px; }
+        .log-entry { background: #f4f4f4; padding: 10px; margin-bottom: 10px; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <h1>Live RabbitMQ Queue Logs</h1>
+    <div id="logs"></div>
+
+    <script>
+        async function fetchLogs() {
+                const response = await fetch('http://localhost:3009/E-commerce/api/v1/messages');
+                console.log('response from mq =>',response)
+                const messages = await response.json();
+                const logsDiv = document.getElementById('logs');
+                logsDiv.innerHTML = ''; // clear previous logs
+                messages.forEach(msg => {
+                const div = document.createElement('div');
+                div.className = 'log-entry';
+                div.textContent = JSON.stringify(msg, null, 2);
+                logsDiv.appendChild(div);
+            });
+        }
+
+        // Fetch logs every 3 seconds
+        setInterval(() =>{fetchLogs}, 3000);
+
+        // Initial fetch
+        fetchLogs();
+    </script>
+</body>
+</html>
